@@ -1,0 +1,21 @@
+{
+  "name": "1dv610-l3",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "run": ""
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Klas05/1DV610-L3.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "bugs": {
+    "url": "https://github.com/Klas05/1DV610-L3/issues"
+  },
+  "homepage": "https://github.com/Klas05/1DV610-L3#readme"
+}
