@@ -13,7 +13,14 @@
             </span>/17 characters
           </small>
         </div>
-        <button type="submit" class="btn btn-primary">Generate QR Code</button>
+
+        <% if (error) { %>
+          <div class="error-message">
+            <%= error %>
+          </div>
+          <% } %>
+
+            <button type="submit" class="btn btn-primary">Generate QR Code</button>
       </form>
     </section>
 
