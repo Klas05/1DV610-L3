@@ -22,7 +22,7 @@ This document contains test cases mapped 1:1 to requirements in [REQUIREMENTS.md
 | TC-FR-6  | SVG format rendering             | PASS   |
 | TC-FR-7  | Scannable QR codes               | PASS   |
 | TC-FR-8  | Download button provision        | PASS   |
-| TC-FR-9  | SVG file download                | FAIL   |
+| TC-FR-9  | SVG file download                | PASS   |
 | TC-FR-10 | Standalone SVG files             | PASS   |
 | TC-FR-11 | Inline error display             | PASS   |
 
