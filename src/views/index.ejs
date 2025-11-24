@@ -1,0 +1,21 @@
+<%- include('partials/header') %>
+
+  <div class="container">
+    <section class="input-section">
+      <form action="/generate" method="POST" id="qr-form">
+        <div class="form-group">
+          <label for="text">Enter text to encode:</label>
+          <input type="text" id="text" name="text" value="<%= inputText %>" maxlength="17"
+            placeholder="Max 17 characters" required>
+          <small class="char-counter">
+            <span id="char-count">
+              <%= inputText ? inputText.length : 0 %>
+            </span>/17 characters
+          </small>
+        </div>
+        <button type="submit" class="btn btn-primary">Generate QR Code</button>
+      </form>
+    </section>
+  </div>
+
+  <%- include('partials/footer') %>
