@@ -1,45 +1,33 @@
-import {
-  generateQRCode as generateMatrix,
-  renderSVGMatrix,
-  validateInput,
-} from "../../lib/1DV610-L2/src/index.js";
+import { generateQRCodeSVG } from "../services/qrCodeService.js";
+import { createViewData } from "../utils/viewHelpers.js";
+import { ERROR_MESSAGES } from "../config/constants.js";
 
-export function renderHomePage(req, res) {
-  res.render("index", {
-    error: null,
-    qrCode: null,
-    inputText: "",
-  });
+export function showQRCodeForm(req, res) {
+  res.render("index", createViewData());
 }
 
-export function generateQRCode(req, res) {
+export function handleQRCodeGeneration(req, res) {
   try {
     const { text } = req.body;
 
     if (!text || text.trim() === "") {
-      return res.render("index", {
-        error: "Please enter some text to generate a QR code.",
-        qrCode: null,
-        inputText: text || "",
-      });
+      return res.render(
+        "index",
+        createViewData(ERROR_MESSAGES.EMPTY_INPUT, null, text || "")
+      );
     }
 
-    validateInput(text);
+    const svgCode = generateQRCodeSVG(text);
 
-    const matrix = generateMatrix(text);
-
-    const svgCode = renderSVGMatrix(matrix, 10);
-
-    res.render("index", {
-      error: null,
-      qrCode: svgCode,
-      inputText: text,
-    });
+    res.render("index", createViewData(null, svgCode, text));
   } catch (error) {
-    res.render("index", {
-      error: error.message || "Failed to generate QR code. Please try again.",
-      qrCode: null,
-      inputText: req.body.text || "",
-    });
+    res.render(
+      "index",
+      createViewData(
+        error.message || ERROR_MESSAGES.GENERATION_FAILED,
+        null,
+        req.body.text || ""
+      )
+    );
   }
 }

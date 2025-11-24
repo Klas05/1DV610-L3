@@ -1,10 +1,13 @@
 import express from "express";
-import { renderHomePage, generateQRCode } from "../controllers/qrController.js";
+import {
+  showQRCodeForm,
+  handleQRCodeGeneration,
+} from "../controllers/qrController.js";
 
 const router = express.Router();
 
-router.get("/", renderHomePage);
+router.get("/", showQRCodeForm);
 
-router.post("/generate", generateQRCode);
+router.post("/generate", handleQRCodeGeneration);
 
 export default router;
