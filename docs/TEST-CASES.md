@@ -263,7 +263,7 @@ This document contains test cases mapped 1:1 to requirements in [REQUIREMENTS.md
 
 1. Run `npm start`
 2. Observe console for startup message
-3. Navigate to http://localhost:3000
+3. Navigate to http://localhost:3000 or public domain
 
 **Expected:** Server starts on port 3000, logs message, responds to requests
 
@@ -304,7 +304,7 @@ This document contains test cases mapped 1:1 to requirements in [REQUIREMENTS.md
 
 **Steps:**
 
-1. Navigate to http://localhost:3000/
+1. Navigate to start page of application
 2. Check Network tab for 200 status
 3. Verify initial state (no error, no QR, empty input)
 
