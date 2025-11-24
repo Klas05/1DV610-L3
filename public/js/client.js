@@ -1,8 +1,10 @@
 const DOM_SELECTORS = {
   TEXT_INPUT: "text",
   CHAR_COUNT: "char-count",
+  SUBMIT_BTN: "qr-form",
   DOWNLOAD_BTN: "download-btn",
   QR_DISPLAY_SVG: "#qr-display svg",
+  CHAR_COUNTER: ".char-counter",
 };
 
 const DOWNLOAD_CONFIG = {
@@ -11,21 +13,61 @@ const DOWNLOAD_CONFIG = {
   MIME_TYPE: "image/svg+xml",
 };
 
+const VALIDATION_CONFIG = {
+  MAX_BYTE_LENGTH: 17,
+};
+
+const CSS_CLASSES = {
+  OVER_LIMIT: "over-limit",
+};
+
 const MESSAGES = {
   NO_QR_CODE: "No QR code to download",
 };
 
-function updateCharacterCount(inputElement, countElement) {
-  countElement.textContent = inputElement.value.length;
+function getByteLength(text) {
+  return new TextEncoder().encode(text).length;
+}
+
+function isOverByteLimit(byteLength) {
+  return byteLength > VALIDATION_CONFIG.MAX_BYTE_LENGTH;
+}
+
+function updateSubmitButtonState(form, isDisabled) {
+  const submitButton = form.querySelector('button[type="submit"]');
+  if (submitButton) {
+    submitButton.disabled = isDisabled;
+  }
+}
+
+function updateVisualFeedback(charCounter, isOverLimit) {
+  if (isOverLimit) {
+    charCounter.classList.add(CSS_CLASSES.OVER_LIMIT);
+  } else {
+    charCounter.classList.remove(CSS_CLASSES.OVER_LIMIT);
+  }
+}
+
+function validateInput(inputElement, countElement, form, charCounter) {
+  const byteLength = getByteLength(inputElement.value);
+  const isOverLimit = isOverByteLimit(byteLength);
+
+  countElement.textContent = byteLength;
+  updateSubmitButtonState(form, isOverLimit);
+  updateVisualFeedback(charCounter, isOverLimit);
 }
 
 function initializeCharacterCounter() {
   const textInput = document.getElementById(DOM_SELECTORS.TEXT_INPUT);
   const charCount = document.getElementById(DOM_SELECTORS.CHAR_COUNT);
+  const form = document.getElementById(DOM_SELECTORS.SUBMIT_BTN);
+  const charCounter = document.querySelector(DOM_SELECTORS.CHAR_COUNTER);
 
-  if (textInput && charCount) {
+  if (textInput && charCount && form && charCounter) {
+    validateInput(textInput, charCount, form, charCounter);
+
     textInput.addEventListener("input", () => {
-      updateCharacterCount(textInput, charCount);
+      validateInput(textInput, charCount, form, charCounter);
     });
   }
 }

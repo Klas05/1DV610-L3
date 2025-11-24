@@ -76,6 +76,12 @@ input[type="text"]:focus {
   margin-top: 5px;
   color: #888;
   font-size: 0.9rem;
+  transition: color 0.3s;
+}
+
+.char-counter.over-limit {
+  color: #c33;
+  font-weight: 600;
 }
 
 .error-message {
@@ -104,9 +110,15 @@ input[type="text"]:focus {
   width: 100%;
 }
 
-.btn-primary:hover {
+.btn-primary:hover:not(:disabled) {
   transform: translateY(-2px);
   box-shadow: 0 4px 12px rgba(102, 126, 234, 0.4);
+}
+
+.btn-primary:disabled {
+  background: #ccc;
+  cursor: not-allowed;
+  opacity: 0.6;
 }
 
 .btn-secondary {
