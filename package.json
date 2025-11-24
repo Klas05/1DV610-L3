@@ -20,6 +20,7 @@
   },
   "homepage": "https://github.com/Klas05/1DV610-L3#readme",
   "dependencies": {
+    "@klas05/l2-qr-code-generator": "^1.0.0",
     "ejs": "^3.1.10",
     "express": "^5.1.0",
     "reedsolomon": "^1.0.0"

@@ -2,7 +2,7 @@ import {
   generateQRCode as generateMatrix,
   renderSVGMatrix,
   validateInput,
-} from "../../lib/1DV610-L2/src/index.js";
+} from "@klas05/l2-qr-code-generator";
 import { QR_CODE_CONFIG } from "../config/constants.js";
 
 export function generateQRCodeSVG(text) {
