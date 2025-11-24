@@ -48,13 +48,12 @@
 | **TR-2** | The system shall use EJS as the view template engine |
 | **TR-3** | The system shall serve static files from public directory |
 | **TR-4** | The system shall implement GET / route for homepage |
-| **TR-5** | The system shall implement POST /generate route for QR generation |
 
 ---
 
 ## 5. Test Case Mapping
 
-Each requirement ID (FR-1 through FR-11, NFR-1 through NFR-3, TR-1 through TR-5) shall have a corresponding test case with the same ID.
+Each requirement ID (FR-1 through FR-11, NFR-1 through NFR-3, TR-1 through TR-4) shall have a corresponding test case with the same ID.
 
 ## 6. Success Criteria
 
@@ -62,7 +61,7 @@ The application is considered successful when:
 
 - [ ] All functional requirements (FR-1 through FR-11) are implemented and tested
 - [ ] All non-functional requirements (NFR-1 through NFR-3) are met
-- [ ] All technical requirements (TR-1 through TR-5) are implemented
+- [ ] All technical requirements (TR-1 through TR-4) are implemented
 - [ ] All test cases pass (to be verified during testing phase)
 - [ ] QR codes generated are verified as scannable
 - [ ] Application is deployed and accessible
@@ -75,5 +74,5 @@ The application is considered successful when:
 |----------|-------|-----|
 | Functional Requirements | 11 | FR-1 to FR-11 |
 | Non-Functional Requirements | 3 | NFR-1 to NFR-3 |
-| Technical Requirements | 5 | TR-1 to TR-5 |
+| Technical Requirements | 5 | TR-1 to TR-4 |
 | **Total Requirements** | **19** | - |
