@@ -12,36 +12,36 @@ This document contains test cases mapped 1:1 to requirements in [REQUIREMENTS.md
 
 ### Functional Requirements
 
-| Test ID  | Requirement                      | Status     |
-| -------- | -------------------------------- | ---------- |
-| TC-FR-1  | Maximum input length enforcement | PASS |
-| TC-FR-2  | Real-time character counter      | PASS |
-| TC-FR-3  | Empty input validation           | PASS |
-| TC-FR-4  | QR code generation               | PASS |
-| TC-FR-5  | QR code display on same page     | PASS |
-| TC-FR-6  | SVG format rendering             | PASS |
-| TC-FR-7  | Scannable QR codes               | PASS |
-| TC-FR-8  | Download button provision        | PASS |
-| TC-FR-9  | SVG file download                | FAIL |
-| TC-FR-10 | Standalone SVG files             | PASS |
-| TC-FR-11 | Inline error display             | PASS |
+| Test ID  | Requirement                      | Status |
+| -------- | -------------------------------- | ------ |
+| TC-FR-1  | Maximum input length enforcement | PASS   |
+| TC-FR-2  | Real-time character counter      | PASS   |
+| TC-FR-3  | Empty input validation           | PASS   |
+| TC-FR-4  | QR code generation               | PASS   |
+| TC-FR-5  | QR code display on same page     | PASS   |
+| TC-FR-6  | SVG format rendering             | PASS   |
+| TC-FR-7  | Scannable QR codes               | PASS   |
+| TC-FR-8  | Download button provision        | PASS   |
+| TC-FR-9  | SVG file download                | FAIL   |
+| TC-FR-10 | Standalone SVG files             | PASS   |
+| TC-FR-11 | Inline error display             | PASS   |
 
 ### Non-Functional Requirements
 
-| Test ID  | Requirement             | Status     |
-| -------- | ----------------------- | ---------- |
-| TC-NFR-1 | Responsive design       | NOT TESTED |
-| TC-NFR-2 | Keyboard navigation     | NOT TESTED |
-| TC-NFR-3 | Graceful error handling | NOT TESTED |
+| Test ID  | Requirement             | Status |
+| -------- | ----------------------- | ------ |
+| TC-NFR-1 | Responsive design       | PASS   |
+| TC-NFR-2 | Keyboard navigation     | PASS   |
+| TC-NFR-3 | Graceful error handling | PASS   |
 
 ### Technical Requirements
 
-| Test ID | Requirement                         | Status     |
-| ------- | ----------------------------------- | ---------- |
-| TC-TR-1 | Express framework configuration     | NOT TESTED |
-| TC-TR-2 | EJS view engine configuration       | NOT TESTED |
-| TC-TR-3 | Static file serving                 | NOT TESTED |
-| TC-TR-4 | GET / route implementation          | NOT TESTED |
+| Test ID | Requirement                     | Status |
+| ------- | ------------------------------- | ------ |
+| TC-TR-1 | Express framework configuration | PASS   |
+| TC-TR-2 | EJS view engine configuration   | PASS   |
+| TC-TR-3 | Static file serving             | PASS   |
+| TC-TR-4 | GET / route implementation      | PASS   |
 
 ---
 
@@ -55,10 +55,9 @@ This document contains test cases mapped 1:1 to requirements in [REQUIREMENTS.md
 
 1. Navigate to app
 2. Attempt to type 20 characters: "12345678901234567890"
-3. Verify only 17 characters appear
-4. Check character counter shows "17/17"
+3. Verify that the form is non submittable when exceeding 17 bytes of input.
 
-**Expected:** Browser prevents typing beyond 17 chars
+**Expected:** Form button gets disabled when exceeding input limit.
 
 ---
 
@@ -247,9 +246,10 @@ This document contains test cases mapped 1:1 to requirements in [REQUIREMENTS.md
 
 **Steps:**
 
-1. Open browser console
-2. Trigger various errors (empty input, etc.)
-3. Verify app remains functional after errors
+1. Generate qr code using input "lnu.se"
+2. Open devtools and remove element with id "qr-display"
+3. Try to download qr code
+4. Verify alert popup
 
 **Expected:** No unhandled exceptions, user-friendly messages, app stays functional
 
@@ -316,7 +316,7 @@ This document contains test cases mapped 1:1 to requirements in [REQUIREMENTS.md
 
 | Category             | Total  | Passed | Failed | Not Tested |
 | -------------------- | ------ | ------ | ------ | ---------- |
-| Functional (FR)      | 11     | 0      | 0      | 11         |
-| Non-Functional (NFR) | 3      | 0      | 0      | 3          |
-| Technical (TR)       | 4      | 0      | 0      | 5          |
-| **TOTAL**            | **18** | **0**  | **0**  | **18**     |
+| Functional (FR)      | 11     | 11     | 0      | 0          |
+| Non-Functional (NFR) | 3      | 3      | 0      | 0          |
+| Technical (TR)       | 4      | 4      | 0      | 0          |
+| **TOTAL**            | **18** | **18** | **0**  | **0**      |

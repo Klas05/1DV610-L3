@@ -72,6 +72,17 @@ function initializeCharacterCounter() {
   }
 }
 
+function formatDateForFilename() {
+  const now = new Date();
+  const year = now.getFullYear();
+  const month = String(now.getMonth() + 1).padStart(2, "0");
+  const day = String(now.getDate()).padStart(2, "0");
+  const hours = String(now.getHours()).padStart(2, "0");
+  const minutes = String(now.getMinutes()).padStart(2, "0");
+
+  return `${year}-${month}-${day}_${hours}-${minutes}`;
+}
+
 function getSVGElement() {
   return document.querySelector(DOM_SELECTORS.QR_DISPLAY_SVG);
 }
@@ -86,7 +97,7 @@ function createDownloadLink(svgData) {
 
   const link = document.createElement("a");
   link.href = url;
-  link.download = `${DOWNLOAD_CONFIG.FILE_PREFIX}${Date.now()}${DOWNLOAD_CONFIG.FILE_EXTENSION}`;
+  link.download = `${DOWNLOAD_CONFIG.FILE_PREFIX}${formatDateForFilename()}${DOWNLOAD_CONFIG.FILE_EXTENSION}`;
 
   return { link, url };
 }
